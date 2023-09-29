@@ -1,6 +1,6 @@
-function RestaurantShow({ restaurant }) {
+function RestaurantShow({ restaurant, handleClickRow }) {
     return (
-        <tr>
+        <tr onClick={() => handleClickRow(restaurant)}>
             <td>{restaurant.restaurantName}</td>
             <td>{restaurant.restaurantAddress}</td>
             <td>{restaurant.restaurantCuisine}</td>
