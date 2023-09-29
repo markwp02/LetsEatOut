@@ -1,7 +1,7 @@
 function RestaurantAdd() {
     return (
-        <div class="panel-block">
-                <button class="button is-success">Add Restaurant</button>
+        <div className="panel-block">
+                <button className="button is-success">Add Restaurant</button>
         </div>
     );
 }
