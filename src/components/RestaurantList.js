@@ -5,15 +5,21 @@ import RestaurantShow from "./RestaurantShow";
 function RestaurantList() {
     const { restaurants } = useContext(RestaurantsContext);
 
-    console.log(restaurants);
-
     const renderedRestaurants = restaurants.map((restaurant) => {
-        console.log(restaurant);
         return <RestaurantShow key={restaurant.restaurantId} restaurant={restaurant} />
     });
 
+    console.log(renderedRestaurants);
+
     return(
-        <div className="panel-block">{renderedRestaurants}</div>
+        <div className="panel-block">
+            <table className="table">
+                <tbody>
+                {renderedRestaurants}
+                </tbody>
+            </table>
+
+        </div>
     );
 }
 
