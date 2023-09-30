@@ -10,7 +10,6 @@ function RestaurantList() {
 
     const handleOpen = () => {
         setShowModal(true);
-        console.log(modalRestaurant);
     };
 
     const handleClose =() => {
@@ -18,8 +17,6 @@ function RestaurantList() {
     };
 
     const handleClickRow = (restaurant) => {
-        //console.log("handleClickRow" + restaurant.restaurantName);
-
         setModalRestaurant(restaurant);
     };
 
@@ -29,7 +26,6 @@ function RestaurantList() {
     );
 
     const renderedRestaurants = restaurants.map((restaurant) => {
-        //console.log(restaurant);
         return <RestaurantShow key={restaurant.restaurantId} handleClickRow={handleClickRow} restaurant={restaurant} />
     });
 
