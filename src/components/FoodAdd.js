@@ -5,7 +5,6 @@ function FoodAdd({ restaurant }) {
 
     const { updateRestaurant } = useContext(RestaurantsContext);
 
-
     const [name, setName] = useState("");
     const [diet, setDiet] = useState("");
     const [rating, setRating] = useState(0);
