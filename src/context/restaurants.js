@@ -12,9 +12,18 @@ function Provider({ children }) {
         setRestaurants(response.data);
     }, []);
 
+    const updateRestaurant = async(updatedRestaurant) => {
+        console.log(updatedRestaurant);
+        await axios.put(`http://localhost:8080/api/restaurants`, {
+            ...updatedRestaurant,
+        });
+        fetchRestaurants();
+    }
+
     const valueToShare = {
         restaurants,
-        fetchRestaurants
+        fetchRestaurants,
+        updateRestaurant
     };
     
     return <RestaurantsContext.Provider value={valueToShare}>{children}</RestaurantsContext.Provider>
