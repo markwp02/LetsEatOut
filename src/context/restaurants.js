@@ -13,7 +13,6 @@ function Provider({ children }) {
     }, []);
 
     const updateRestaurant = async(updatedRestaurant) => {
-        console.log(updatedRestaurant);
         await axios.put(`http://localhost:8080/api/restaurants`, {
             ...updatedRestaurant,
         });
