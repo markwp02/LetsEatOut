@@ -34,7 +34,7 @@ function FoodModal({ handleClose, modalRestaurant }) {
                 <section className="modal-card-body">
                     {optionsRadioButton}
                     {showOption === "List" && <FoodList foodList={modalRestaurant.foodList}/>}
-                    {showOption === "Add" && <FoodAdd restaurant={modalRestaurant} />}
+                    {showOption === "Add" && <FoodAdd restaurant={modalRestaurant} handleClose={handleClose} />}
                 </section>
             </div>
         </div>

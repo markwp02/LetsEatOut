@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import RestaurantsContext from "../context/restaurants";
 
-function FoodAdd({ restaurant }) {
+function FoodAdd({ restaurant, handleClose }) {
 
     const { updateRestaurant } = useContext(RestaurantsContext);
 
@@ -10,6 +10,12 @@ function FoodAdd({ restaurant }) {
     const [rating, setRating] = useState(0);
     
     const handleAddClick = () => {
+
+        if(name.length === 0) {
+            console.warn("Food name cannot be empty");
+            return;
+        }
+
         const foodItem = {
             foodName: name,
             foodDiet: diet,
@@ -22,6 +28,8 @@ function FoodAdd({ restaurant }) {
         ];
 
         updateRestaurant(restaurant);
+
+        handleClose();
     };
 
     const handleOnRatingChange = (event) => {
