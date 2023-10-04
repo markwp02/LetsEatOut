@@ -15,8 +15,9 @@ function App() {
     return (
         <div>
             <RestaurantSearch />
-            <RestaurantAdd />
             <RestaurantList />
+            <hr />
+            <RestaurantAdd />
         </div>
     );
 }

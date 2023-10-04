@@ -13,14 +13,22 @@ function Provider({ children }) {
     }, []);
 
     const updateRestaurant = async(updatedRestaurant) => {
-        await axios.put(`http://localhost:8080/api/restaurants`, {
+        await axios.put('http://localhost:8080/api/restaurants', {
             ...updatedRestaurant,
         });
         fetchRestaurants();
-    }
+    };
+
+    const addRestaurant = async(newRestaurant) => {
+        await axios.post('http://localhost:8080/api/restaurants', {
+            ...newRestaurant,
+        });
+        fetchRestaurants();
+    };
 
     const valueToShare = {
         restaurants,
+        addRestaurant,
         fetchRestaurants,
         updateRestaurant
     };
