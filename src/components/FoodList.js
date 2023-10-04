@@ -1,9 +1,23 @@
+import { useContext } from "react";
 import FoodShow from "./FoodShow";
+import RestaurantsContext from "../context/restaurants";
 
-function FoodList({ foodList }) {
+
+function FoodList({ restaurant }) {
     
-    const renderedFoodItems = foodList.map((food) => {
-        return <FoodShow key={food.foodId} food={food} />
+    const { updateRestaurant } = useContext(RestaurantsContext);
+
+
+    const handleDeleteFood = (foodToDelete) => {
+        const updatedFoodList = restaurant.foodList.filter((foodItem) => {
+            return foodItem.foodId !== foodToDelete.foodId;
+        });
+        restaurant.foodList = updatedFoodList;
+        updateRestaurant(restaurant);
+    };
+
+    const renderedFoodItems = restaurant.foodList.map((food) => {
+        return <FoodShow key={food.foodId} food={food} handleDeleteFood={handleDeleteFood}/>
     });
     
     return (

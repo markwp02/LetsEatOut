@@ -6,6 +6,13 @@ const RestaurantsContext = createContext();
 function Provider({ children }) {
     const [restaurants, setRestaurants] = useState([]);
 
+    const addRestaurant = async(newRestaurant) => {
+        await axios.post('http://localhost:8080/api/restaurants', {
+            ...newRestaurant,
+        });
+        fetchRestaurants();
+    };
+
     const fetchRestaurants = useCallback(async () => {
         const response = await axios.get('http://localhost:8080/api/restaurants');
 
@@ -15,13 +22,6 @@ function Provider({ children }) {
     const updateRestaurant = async(updatedRestaurant) => {
         await axios.put('http://localhost:8080/api/restaurants', {
             ...updatedRestaurant,
-        });
-        fetchRestaurants();
-    };
-
-    const addRestaurant = async(newRestaurant) => {
-        await axios.post('http://localhost:8080/api/restaurants', {
-            ...newRestaurant,
         });
         fetchRestaurants();
     };
