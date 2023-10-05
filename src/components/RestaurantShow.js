@@ -1,9 +1,10 @@
-function RestaurantShow({ restaurant, handleClickRow }) {
+function RestaurantShow({ restaurant, handleClickRow, handleClickDelete }) {
     return (
-        <tr onClick={() => handleClickRow(restaurant)}>
-            <td>{restaurant.restaurantName}</td>
-            <td>{restaurant.restaurantAddress}</td>
-            <td>{restaurant.restaurantCuisine}</td>
+        <tr>
+            <td onClick={() => handleClickRow(restaurant)}>{restaurant.restaurantName}</td>
+            <td onClick={() => handleClickRow(restaurant)}>{restaurant.restaurantAddress}</td>
+            <td onClick={() => handleClickRow(restaurant)}>{restaurant.restaurantCuisine}</td>
+            <td className="delete" onClick={() => handleClickDelete(restaurant)} aria-label="close"></td>
         </tr>
     );
 }

@@ -28,7 +28,13 @@ function Provider({ children }) {
         });
         restaurant.foodList = updatedFoodList;
         updateRestaurant(restaurant);
-    }
+    };
+
+    const deleteRestaurantById = async (restaurantId) => {
+        await axios.delete(`http://localhost:8080/api/restaurants/${restaurantId}`); 
+        
+        fetchRestaurants();
+    };
 
     const fetchRestaurants = useCallback(async () => {
         const response = await axios.get('http://localhost:8080/api/restaurants');
@@ -48,6 +54,7 @@ function Provider({ children }) {
         addFoodToRestaurant,
         addRestaurant,
         deleteFoodFromRestaurant,
+        deleteRestaurantById,
         fetchRestaurants,
         updateRestaurant
     };

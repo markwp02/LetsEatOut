@@ -4,7 +4,7 @@ import RestaurantShow from "./RestaurantShow";
 import FoodModal from "./FoodModal";
 
 function RestaurantList() {
-    const { restaurants } = useContext(RestaurantsContext);
+    const { restaurants, deleteRestaurantById } = useContext(RestaurantsContext);
     const [showModal, setShowModal] = useState(false);
     const [modalRestaurant, setModalRestaurant] = useState(null);
 
@@ -18,7 +18,12 @@ function RestaurantList() {
 
     const handleClickRow = (restaurant) => {
         setModalRestaurant(restaurant);
+        handleOpen();
     };
+
+    const handleClickDelete = (restaurant) => {
+        deleteRestaurantById(restaurant.restaurantId);
+    }
 
     const modal = ( 
         <FoodModal handleClose={handleClose} modalRestaurant={modalRestaurant}>
@@ -26,13 +31,13 @@ function RestaurantList() {
     );
 
     const renderedRestaurants = restaurants.map((restaurant) => {
-        return <RestaurantShow key={restaurant.restaurantId} handleClickRow={handleClickRow} restaurant={restaurant} />
+        return <RestaurantShow key={restaurant.restaurantId} handleClickRow={handleClickRow} handleClickDelete={handleClickDelete} restaurant={restaurant} />
     });
 
     return(
         <div className="panel-block">
             <table className="table is-hoverable">
-                <tbody onClick={handleOpen}>
+                <tbody>
                 {renderedRestaurants}
                 </tbody>
             </table>
