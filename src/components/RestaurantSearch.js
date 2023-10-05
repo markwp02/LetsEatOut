@@ -1,10 +1,11 @@
 import { GoSearch } from "react-icons/go";
 
-function RestaurantSearch({ searchTerm, setSearchTerm }) {
-    
-    const handleSearchTermChange = (event) => {
-        setSearchTerm(event.target.value);
-    }
+/*
+    Component to display a search input that stores the result in state
+    searchTerm - State that records the value of the searchTerm
+    handleSearchTermChange - function that will update the searchTermState
+*/
+function RestaurantSearch({ searchTerm, handleSearchTermChange }) {
 
     return (
         <div className="panel is-primary">

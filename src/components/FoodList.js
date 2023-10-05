@@ -2,7 +2,10 @@ import { useContext } from "react";
 import FoodShow from "./FoodShow";
 import RestaurantsContext from "../context/restaurants";
 
-
+/*
+    Component that displays all the food items associated the the supplied restaurant
+    restaurant - selected restaurant to display food items
+*/
 function FoodList({ restaurant }) {
     
     const { deleteFoodFromRestaurant } = useContext(RestaurantsContext);

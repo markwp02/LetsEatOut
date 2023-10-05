@@ -9,13 +9,17 @@ function App() {
     const { fetchRestaurants } = useContext(RestaurantsContext);
     const [ searchTerm, setSearchTerm ] = useState('');
 
+    const handleSearchTermChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
     useEffect(() => {
         fetchRestaurants();
     }, [fetchRestaurants]);
 
     return (
         <div>
-            <RestaurantSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <RestaurantSearch searchTerm={searchTerm} handleSearchTermChange={handleSearchTermChange} />
             <RestaurantList searchTerm={searchTerm} />
             <RestaurantAdd />
         </div>
