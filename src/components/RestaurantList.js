@@ -3,11 +3,17 @@ import RestaurantsContext from "../context/restaurants";
 import RestaurantShow from "./RestaurantShow";
 import FoodModal from "./FoodModal";
 
-function RestaurantList() {
+function RestaurantList({ searchTerm }) {
     const { restaurants, deleteRestaurantById } = useContext(RestaurantsContext);
     const [showModal, setShowModal] = useState(false);
     const [modalRestaurant, setModalRestaurant] = useState(null);
 
+    const filteredRestaurants = restaurants.filter((restaurant) => 
+        restaurant.restaurantName.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        restaurant.restaurantAddress.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        restaurant.restaurantCuisine.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
     const handleOpen = () => {
         setShowModal(true);
     };
@@ -30,7 +36,7 @@ function RestaurantList() {
         </FoodModal>
     );
 
-    const renderedRestaurants = restaurants.map((restaurant) => {
+    const renderedRestaurants = filteredRestaurants.map((restaurant) => {
         return <RestaurantShow key={restaurant.restaurantId} handleClickRow={handleClickRow} handleClickDelete={handleClickDelete} restaurant={restaurant} />
     });
 

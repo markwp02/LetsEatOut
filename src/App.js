@@ -1,12 +1,13 @@
 import RestaurantList from "./components/RestaurantList";
 import RestaurantSearch from "./components/RestaurantSearch";
 import RestaurantAdd from "./components/RestaurantAdd";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestaurantsContext from "./context/restaurants";
 
 function App() {
 
     const { fetchRestaurants } = useContext(RestaurantsContext);
+    const [ searchTerm, setSearchTerm ] = useState('');
 
     useEffect(() => {
         fetchRestaurants();
@@ -14,8 +15,8 @@ function App() {
 
     return (
         <div>
-            <RestaurantSearch />
-            <RestaurantList />
+            <RestaurantSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <RestaurantList searchTerm={searchTerm} />
             <RestaurantAdd />
         </div>
     );
