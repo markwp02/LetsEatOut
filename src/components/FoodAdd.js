@@ -3,7 +3,7 @@ import RestaurantsContext from "../context/restaurants";
 
 function FoodAdd({ restaurant, handleClose }) {
 
-    const { updateRestaurant } = useContext(RestaurantsContext);
+    const { addFoodToRestaurant } = useContext(RestaurantsContext);
 
     const [name, setName] = useState("");
     const [diet, setDiet] = useState("");
@@ -22,12 +22,7 @@ function FoodAdd({ restaurant, handleClose }) {
             foodRating: rating
         }
 
-        restaurant.foodList = [
-            ...restaurant.foodList,
-            foodItem
-        ];
-
-        updateRestaurant(restaurant);
+        addFoodToRestaurant(restaurant, {foodItem});
 
         handleClose();
     };

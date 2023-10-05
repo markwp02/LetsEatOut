@@ -13,6 +13,23 @@ function Provider({ children }) {
         fetchRestaurants();
     };
 
+    const addFoodToRestaurant = (restaurant, foodToAdd) => {
+        restaurant.foodList = [
+            ...restaurant.foodList,
+            foodToAdd
+        ];
+
+        updateRestaurant(restaurant);
+    };
+
+    const deleteFoodFromRestaurant = (restaurant, foodId) => {
+        const updatedFoodList = restaurant.foodList.filter((foodItem) => {
+            return foodItem.foodId !== foodId;
+        });
+        restaurant.foodList = updatedFoodList;
+        updateRestaurant(restaurant);
+    }
+
     const fetchRestaurants = useCallback(async () => {
         const response = await axios.get('http://localhost:8080/api/restaurants');
 
@@ -28,7 +45,9 @@ function Provider({ children }) {
 
     const valueToShare = {
         restaurants,
+        addFoodToRestaurant,
         addRestaurant,
+        deleteFoodFromRestaurant,
         fetchRestaurants,
         updateRestaurant
     };

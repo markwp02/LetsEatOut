@@ -5,15 +5,10 @@ import RestaurantsContext from "../context/restaurants";
 
 function FoodList({ restaurant }) {
     
-    const { updateRestaurant } = useContext(RestaurantsContext);
-
+    const { deleteFoodFromRestaurant } = useContext(RestaurantsContext);
 
     const handleDeleteFood = (foodToDelete) => {
-        const updatedFoodList = restaurant.foodList.filter((foodItem) => {
-            return foodItem.foodId !== foodToDelete.foodId;
-        });
-        restaurant.foodList = updatedFoodList;
-        updateRestaurant(restaurant);
+       deleteFoodFromRestaurant(restaurant, foodToDelete.foodId);
     };
 
     const renderedFoodItems = restaurant.foodList.map((food) => {
