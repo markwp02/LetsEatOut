@@ -1,6 +1,9 @@
 import { useState, useContext } from "react";
 import RestaurantsContext from "../context/restaurants";
 
+/*
+    Component to add a new restaurant
+*/
 function RestaurantAdd() {
     const { addRestaurant } = useContext(RestaurantsContext);
 

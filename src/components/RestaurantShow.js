@@ -1,3 +1,9 @@
+/*
+    Component to display a restaurant
+    restaurant - selected restaurant to display
+    handleClickRow - function to select the restaurant when clicked
+    handleClickDelete - function to delete clicked restaurant
+*/
 function RestaurantShow({ restaurant, handleClickRow, handleClickDelete }) {
     return (
         <tr>

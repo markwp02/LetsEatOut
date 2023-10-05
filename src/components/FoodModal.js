@@ -2,8 +2,14 @@ import { useState } from "react";
 import FoodList from "./FoodList";
 import FoodAdd from "./FoodAdd";
 
+/*
+    Modal (popup) that will display either the foodList of the selected restaurant, or a form to add a new food item
+    handleClose - function to close the modal
+    modalRestaurant - selected restaurant to display in modal
+*/
 function FoodModal({ handleClose, modalRestaurant }) {
 
+    // State used to determine what to display - defaulted to listing food items
     const [showOption, setShowOption] = useState("List");
 
     const handleChange = (event) => {

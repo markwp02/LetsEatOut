@@ -3,6 +3,10 @@ import RestaurantsContext from "../context/restaurants";
 import RestaurantShow from "./RestaurantShow";
 import FoodModal from "./FoodModal";
 
+/*
+    Component to list all restaurants
+    searchTerm - State that will be used to filter the restaurants displayed
+*/
 function RestaurantList({ searchTerm }) {
     const { restaurants, deleteRestaurantById } = useContext(RestaurantsContext);
     const [showModal, setShowModal] = useState(false);

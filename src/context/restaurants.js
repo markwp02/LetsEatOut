@@ -3,6 +3,9 @@ import axios from 'axios';
 
 const RestaurantsContext = createContext();
 
+/*
+    Context that is used for all REST API requests with axios
+*/
 function Provider({ children }) {
     const [restaurants, setRestaurants] = useState([]);
 

@@ -1,6 +1,11 @@
 import { useState, useContext } from "react";
 import RestaurantsContext from "../context/restaurants";
 
+/*
+    Component to add a food item to the restaurant's foodList
+    restaurant - selected restaurant to add the foodItem
+    handleClose - function that closes the parent modal after submitting
+*/
 function FoodAdd({ restaurant, handleClose }) {
 
     const { addFoodToRestaurant } = useContext(RestaurantsContext);
